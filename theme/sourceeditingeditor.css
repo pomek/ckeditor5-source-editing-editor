@@ -1,0 +1,21 @@
+/*
+ * Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+
+.ck-source-editing-area {
+    border: 1px solid var(--ck-color-toolbar-border);
+    border-radius: var(--ck-border-radius);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    width: calc(100% - 2px);
+
+    &::after {
+        display: none;
+    }
+
+    & pre {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
