@@ -5,11 +5,6 @@
 /* global window */
 
 import { Plugin } from 'ckeditor5/src/core';
-import htmlBeautify from 'html-beautify';
-
-import 'ace-builds/src-min-noconflict/ace';
-import 'ace-builds/src-min-noconflict/mode-html';
-import 'ace-builds/src-min-noconflict/theme-chrome';
 
 import '../theme/sourceeditingeditor.css';
 
@@ -22,14 +17,8 @@ export default class SourceEditingEditor extends Plugin {
 	/**
 	 * @inheritDoc
 	 */
-	constructor( editor ) {
-		super( editor );
-
-		/**
-		 * @private
-		 * @member {Array}
-		 */
-		this._aceEditors = [];
+	static get requires() {
+		return [ 'SourceEditing' ];
 	}
 
 	/**
@@ -42,17 +31,23 @@ export default class SourceEditingEditor extends Plugin {
 	/**
 	 * @inheritDoc
 	 */
-	static get requires() {
-		return [ 'SourceEditing' ];
+	init() {
+		this._aceEditors = [];
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	init() {
+	afterInit() {
+		if ( !ace ) {
+			console.log( 'The "ace" library must be provided.' );
+
+			return;
+		}
+
 		const editor = this.editor;
 
-		this.listenTo( editor.plugins.get( SourceEditing ), 'change:isSourceEditingMode', ( evt, name, isSourceEditingMode ) => {
+		this.listenTo( editor.plugins.get( 'SourceEditing' ), 'change:isSourceEditingMode', ( evt, name, isSourceEditingMode ) => {
 			if ( !isSourceEditingMode ) {
 				leaveEditingSourceMode( editor );
 			} else {
@@ -63,8 +58,9 @@ export default class SourceEditingEditor extends Plugin {
 }
 
 /**
+ * A callback which is executed when leaving the editing source mode.
  *
- * @param editor
+ * @param {module:core/editor/editor~Editor} editor
  */
 function leaveEditingSourceMode( editor ) {
 	const sourceEditingEditor = editor.plugins.get( 'SourceEditingEditor' );
@@ -77,8 +73,9 @@ function leaveEditingSourceMode( editor ) {
 }
 
 /**
+ * A callback which is executed when entering the editing source mode.
  *
- * @param editor
+ * @param {module:core/editor/editor~Editor} editor
  */
 function enterEditingSourceMode( editor ) {
 	const sourceEditing = editor.plugins.get( 'SourceEditing' );
@@ -95,8 +92,6 @@ function enterEditingSourceMode( editor ) {
 			autoScrollEditorIntoView: true,
 			showPrintMargin: false
 		} );
-
-		aceEditor.setValue( htmlBeautify( textarea.value ) );
 
 		aceEditor.on( 'change', () => {
 			textarea.value = aceEditor.getValue();
