@@ -12,7 +12,7 @@ const config = builds.getDllPluginWebpackConfig( {
 } );
 
 // `getDllPluginWebpackConfig()` is configured for the "@ckeditor" scope. Manual adjustments are needed.
-config.output.library = [ 'CKEditor5', 'sourceEditingEditor' ];
+config.output.library = [ 'Pomek', 'sourceEditingEditor' ];
 config.output.filename = 'source-editing-editor.js';
 
 module.exports = config;
