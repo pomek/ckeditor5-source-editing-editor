@@ -28,6 +28,18 @@ export default class SourceEditingEditor extends Plugin {
 		return 'SourceEditingEditor';
 	}
 
+	static staticTest( a ) {
+		if ( a === 1 ) {
+			return 'foo';
+		}
+
+		if ( a == 3 ) {
+			throw new Error( 'Test' );
+		}
+
+		return 'bar';
+	}
+
 	/**
 	 * @inheritDoc
 	 */
