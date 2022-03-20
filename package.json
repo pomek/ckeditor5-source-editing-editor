@@ -1,6 +1,6 @@
 {
   "name": "@pomek/ckeditor5-source-editing-editor",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A plugin that replaces the textarea field with a code editor when entering the editing source mode.",
   "keywords": [
     "ckeditor5",
