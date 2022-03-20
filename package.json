@@ -76,6 +76,7 @@
     "translations:upload": "ckeditor5-package-tools translations:upload",
     "changelog": "node ./scripts/changelog.js",
     "release:bump-version": "node ./scripts/bump-version.js",
+    "postrelease:bump-version": "yarn run dll:build",
     "release:publish": "node ./scripts/publish.js"
   },
   "lint-staged": {
