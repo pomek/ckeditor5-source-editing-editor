@@ -28,18 +28,6 @@ export default class SourceEditingEditor extends Plugin {
 		return 'SourceEditingEditor';
 	}
 
-	static staticTest( a ) {
-		if ( a === 1 ) {
-			return 'foo';
-		}
-
-		if ( a == 3 ) {
-			throw new Error( 'Test' );
-		}
-
-		return 'bar';
-	}
-
 	/**
 	 * @inheritDoc
 	 */
@@ -52,7 +40,7 @@ export default class SourceEditingEditor extends Plugin {
 	 */
 	afterInit() {
 		if ( !ace ) {
-			console.log( 'The "ace" library must be provided.' );
+			window.console.log( 'The "ace" library must be provided.' );
 
 			return;
 		}
@@ -100,7 +88,7 @@ function enterEditingSourceMode( editor ) {
 			theme: 'ace/theme/chrome',
 			mode: 'ace/mode/html',
 			minLines: 5,
-			maxLines: 20,
+			maxLines: Infinity,
 			autoScrollEditorIntoView: true,
 			showPrintMargin: false
 		} );
