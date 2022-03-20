@@ -2,7 +2,7 @@
 
 This feature adds the [Ice](https://github.com/zeroc-ice/ice) editor when enabling the source editing plugin in CKEditor 5.
 
-<img width="821" alt="image" src="https://user-images.githubusercontent.com/2270764/159161777-514d02b0-446f-4b75-a102-7d1cfccb4eaf.png">
+<img width="810" alt="image" src="https://user-images.githubusercontent.com/2270764/159162052-32bd44a3-340f-40da-a3c0-001a3f8474dd.png">
 
 ## Installation
 
