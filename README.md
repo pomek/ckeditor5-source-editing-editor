@@ -9,7 +9,7 @@ This feature adds the [Ice](https://github.com/zeroc-ice/ice) editor when enabli
 Install required packages:
 
 ```bash
-npm install --save @ckeditor/ckeditor5-source-editing https://github.com/pomek/ckeditor5-source-editing-editor
+npm install --save @ckeditor/ckeditor5-source-editing @pomek/ckeditor5-source-editing-editor
 ```
 
 Then, enable these features in your editor:
